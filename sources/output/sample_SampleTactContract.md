@@ -1,6 +1,6 @@
 # TACT Compilation Report
 Contract: SampleTactContract
-BOC Size: 849 bytes
+BOC Size: 964 bytes
 
 # Types
 Total Types: 7
@@ -34,9 +34,11 @@ TLB: `add#87d43ac2 amount:uint32 = Add`
 Signature: `Add{amount:uint32}`
 
 # Get Methods
-Total Get Methods: 1
+Total Get Methods: 2
 
 ## counter
+
+## getter
 
 # Error Codes
 2: Stack undeflow

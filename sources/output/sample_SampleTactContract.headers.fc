@@ -69,8 +69,14 @@ builder $SampleTactContract$_store(builder build_0, (slice, int) v) inline;
 ;; $SampleTactContract$_fun_add
 ((slice, int), ()) $SampleTactContract$_fun_add((slice, int) $self, int $v) impure inline_ref;
 
+;; $SampleTactContract$_fun_minus
+((slice, int), ()) $SampleTactContract$_fun_minus((slice, int) $self, int $v) impure inline_ref;
+
 ;; $SampleTactContract$_fun_counter
 ((slice, int), int) $SampleTactContract$_fun_counter((slice, int) $self) impure inline_ref;
+
+;; $SampleTactContract$_fun_getter
+((slice, int), int) $SampleTactContract$_fun_getter((slice, int) $self) impure inline_ref;
 
 ;; $SendParameters$_constructor_bounce_to_value_mode_body_code_data
 ((int, slice, int, int, cell, cell, cell)) $SendParameters$_constructor_bounce_to_value_mode_body_code_data(int bounce, slice to, int value, int mode, cell body, cell code, cell data) inline;
