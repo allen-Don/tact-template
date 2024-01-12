@@ -646,7 +646,7 @@
 
 "@tact-lang/compiler@^1.1.5":
   version "1.1.5"
-  resolved "https://registry.npmjs.org/@tact-lang/compiler/-/compiler-1.1.5.tgz"
+  resolved "https://registry.yarnpkg.com/@tact-lang/compiler/-/compiler-1.1.5.tgz#cad19bcf803943b23a1ecc9d6e9749c645b295a6"
   integrity sha512-J48CKURf5bx3iIH6JKcGi/aiS0ASHe610caeD5Ud7sOFMRpHkDkDepE+7nRm/EsiAi5HVHwSwSVsW2YvB1CHNw==
   dependencies:
     "@ipld/dag-pb" "2.1.18"

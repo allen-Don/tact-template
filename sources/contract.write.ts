@@ -1,6 +1,6 @@
 import { Address, contractAddress, toNano } from "@ton/core";
 import { TonClient4, WalletContractV4 } from "@ton/ton";
-import { SampleTactContract } from "./output/sample_SampleTactContract";
+import { SampleTactContract,Add,Subtract,Multiply, Divide } from "./output/sample_SampleTactContract";
 import { mnemonicToPrivateKey } from "@ton/crypto";
 
 const Sleep = (ms: number)=> {
@@ -14,7 +14,7 @@ const Sleep = (ms: number)=> {
     });
 
     // open wallet v4 (notice the correct wallet version here)
-    const mnemonic = "owner seed phrase"; // your 24 secret words (replace ... with the rest of the words)
+    const mnemonic = "usage coral seat love tobacco reflect control speed convince culture family type bean absent discover final aerobic peace ozone judge cook sibling pink laugh"; // your 24 secret words (replace ... with the rest of the words)
     const key = await mnemonicToPrivateKey(mnemonic.split(" "));
     const wallet = WalletContractV4.create({ publicKey: key.publicKey, workchain: 0 });
     
@@ -23,21 +23,32 @@ const Sleep = (ms: number)=> {
     const walletSender = walletContract.sender(key.secretKey);
 
     // open the contract address
-    let owner = Address.parse("0QBADh0sq03S3qxOwrl12QEYIgLlw9ejB-PD1tjLJouyTEg9");
-    let init = await SampleTactContract.init(owner);
+    let init = await SampleTactContract.init();
     let contract_address = contractAddress(0, init);
     let contract = await SampleTactContract.fromAddress(contract_address);
     let contract_open = await client.open(contract);
 
     // send message to contract
-    await contract_open.send(walletSender, { value: toNano("0.01") }, "increment");
+    // await contract_open.send(walletSender, { value: toNano("0.01") }, "increment");
 
-    await Sleep(10000);
-    console.log("incremented: Counter Value: " + (await contract_open.getCounter()));
+    // contract_open.send(walletSender, {value: toNano("0.01")}, {
+    //     $$type: 'Add', amount: 10n
+    // } as Add);
 
-    await contract_open.send(walletSender, { value: toNano("0.01") }, "decrement");
-    
-    await Sleep(10000);
-    console.log("decremented:Counter Value: " + (await contract_open.getCounter()));
+    // contract_open.send(walletSender, {value: toNano("0.01")}, {
+    //     $$type: 'Multiply', amount: 2n
+    // } as Multiply);
+
+    // contract_open.send(walletSender, {value: toNano("0.01")}, {
+    //     $$type: 'Subtract', amount: 4n
+    // } as Subtract);
+
+    contract_open.send(walletSender, {value: toNano("0.01")}, {
+        $$type: 'Divide', amount: 2n
+    } as Divide);
+
+    await Sleep(20000);
+    console.log("incremented: Counter Value: " + (await contract_open.getValue()));
+
 })();
 

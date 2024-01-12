@@ -1,9 +1,9 @@
 # TACT Compilation Report
 Contract: SampleTactContract
-BOC Size: 964 bytes
+BOC Size: 879 bytes
 
 # Types
-Total Types: 7
+Total Types: 11
 
 ## StateInit
 TLB: `_ code:^cell data:^cell = StateInit`
@@ -33,12 +33,26 @@ Signature: `FactoryDeploy{queryId:uint64,cashback:address}`
 TLB: `add#87d43ac2 amount:uint32 = Add`
 Signature: `Add{amount:uint32}`
 
+## Subtract
+TLB: `subtract#5c8e8db9 amount:uint32 = Subtract`
+Signature: `Subtract{amount:uint32}`
+
+## Multiply
+TLB: `multiply#82491bc4 amount:uint32 = Multiply`
+Signature: `Multiply{amount:uint32}`
+
+## Divide
+TLB: `divide#7ca4745f amount:uint32 = Divide`
+Signature: `Divide{amount:uint32}`
+
+## MultiMath
+TLB: `multi_math#8462dd01 add:uint32 subtract:uint32 multiply:uint32 = MultiMath`
+Signature: `MultiMath{add:uint32,subtract:uint32,multiply:uint32}`
+
 # Get Methods
-Total Get Methods: 2
+Total Get Methods: 1
 
-## counter
-
-## getter
+## value
 
 # Error Codes
 2: Stack undeflow
@@ -65,4 +79,3 @@ Total Get Methods: 2
 135: Code of a contract was not found
 136: Invalid address
 137: Masterchain support is not enabled for this contract
-4429: Invalid sender

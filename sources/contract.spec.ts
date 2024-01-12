@@ -8,7 +8,7 @@ describe("contract", () => {
         let system = await ContractSystem.create();
         let owner = system.treasure("owner");
         let nonOwner = system.treasure("non-owner");
-        let contract = system.open(await SampleTactContract.fromInit(owner.address));
+        let contract = system.open(await SampleTactContract.fromInit());
         system.name(contract.address, "main");
         let track = system.track(contract);
         await contract.send(owner, { value: toNano(1) }, { $$type: "Deploy", queryId: 0n });
@@ -67,7 +67,7 @@ describe("contract", () => {
         `);
 
         // Check counter
-        expect(await contract.getCounter()).toEqual(0n);
+        expect(await contract.getValue()).toEqual(0n);
 
         // Increment counter
         await contract.send(owner, { value: toNano(1) }, "increment");
@@ -117,7 +117,7 @@ describe("contract", () => {
         `);
 
         // Check counter
-        expect(await contract.getCounter()).toEqual(1n);
+        expect(await contract.getValue()).toEqual(1n);
 
         // Non-owner
         await contract.send(nonOwner, { value: toNano(1) }, "increment");
